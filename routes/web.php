@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'UsersController@index');
+
+Route::resource('challenges', 'ChallengesController');
