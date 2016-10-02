@@ -22,7 +22,11 @@ class ChallengesController extends Controller
     {
         // TODO: Add filters
 
-        $challenges = Challenge::with(['game', 'platform', 'language', 'difficulty', 'user'])->get();
+        $challenges = Challenge::orderBy('created_at', 'desc')
+            ->with(['game', 'platform', 'ratings', 'language', 'difficulty', 'user'])
+            ->get();
+
+        return view('challenges.index', compact('challenges'));
 
         return $challenges;
     }
@@ -36,7 +40,7 @@ class ChallengesController extends Controller
     {
         $games = Game::orderBy('title', 'asc')->get();
         $platforms = Platform::orderBy('title', 'asc')->get();
-        $difficulties = Difficulty::orderBy('title', 'asc')->get();
+        $difficulties = Difficulty::orderBy('id', 'asc')->get();
         $languages = Language::orderBy('title', 'asc')->get();
 
         return view('challenges.create',
@@ -72,9 +76,11 @@ class ChallengesController extends Controller
      * @param  Challenge $challenge
      * @return \Illuminate\Http\Response
      */
-    public function show(Challenge $challenge)
+    public function show(Request $request, Challenge $challenge)
     {
-        return $challenge->load(['game', 'platform', 'language', 'difficulty', 'user']);
+        $challenge = $challenge->load(['game', 'platform', 'language', 'difficulty', 'user', 'ratings']);
+
+        return view('challenges.show', compact('challenge'));
     }
 
     /**

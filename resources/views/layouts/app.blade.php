@@ -14,6 +14,29 @@
     <link href="/css/app.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+    <style media="screen">
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+    body {
+      /* Margin bottom by footer height */
+      margin-bottom: 60px;
+    }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      /* Set the fixed height of the footer here */
+      height: 60px;
+      background-color: #f5f5f5;
+    }
+
+    .footer .text-muted {
+        margin: 20px 0;
+    }
+    </style>
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -60,6 +83,10 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
+                                    <a href="{{ route('home.index')}}">Dashboard</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -79,6 +106,23 @@
     </nav>
 
     @yield('content')
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <p class="text-muted">
+                    &copy; RPGames.gg 2016
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <p class="text-muted text-right">
+                    Made with <i class="fa fa-heart fa-fw" style="color: red;"></i> by <a href="https://steamcommunity.com/id/knifely">kniFely</a>
+                </p>
+            </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>

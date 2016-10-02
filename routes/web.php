@@ -17,6 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'UsersController@index');
+Route::resource('home', 'UsersController');
 
 Route::resource('challenges', 'ChallengesController');

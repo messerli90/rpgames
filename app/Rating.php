@@ -47,4 +47,23 @@ class Rating extends Model
     {
         return $this->morphTo();
     }
+
+    /**
+     * Return star icons
+     *
+     * @return String
+     */
+    public static function getStars($value)
+    {
+        $return = '';
+        for ($i=0; $i < 5; $i++) {
+            if($i <= $value) {
+                $return .= '<i class="fa fa-star"></i>';
+            } else {
+                $return .= '<i class="fa fa-star-o"></i>';
+            }
+        }
+
+        return $return;
+    }
 }

@@ -32,6 +32,13 @@ class Challenge extends Model
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['average_rating', 'count_favorites'];
+
+    /**
      * A Challenge belongs to a User
      *
      * @return Collection
@@ -82,6 +89,16 @@ class Challenge extends Model
     }
 
     /**
+     * A Challenge can have Favorites
+     *
+     * @return Collection
+     */
+    public function favorites()
+    {
+        return $this->morphMany('App\Favorite', 'favoritable');
+    }
+
+    /**
      * A Challenge can have Comments
      * @return Collection
      */
@@ -97,5 +114,25 @@ class Challenge extends Model
     public function ratings()
     {
         return $this->morphMany('App\Rating', 'rateable');
+    }
+
+    /**
+     * Get the average rating of this Challenge
+     *
+     * @return double
+     */
+    public function getAverageRatingAttribute()
+    {
+        return (double) $this->ratings()->avg('value');
+    }
+
+    /**
+     * Get the count of Favorites for this Challenge
+     *
+     * @return int
+     */
+    public function getCountFavoritesAttribute()
+    {
+        return (int) $this->favorites()->count();
     }
 }
