@@ -25,3 +25,5 @@ Route::resource('home', 'UsersController');
 Route::resource('challenges', 'ChallengesController');
 
 Route::resource('reviews', 'ReviewsController');
+
+Route::resource('favorites', 'FavoritesController');

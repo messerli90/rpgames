@@ -98,7 +98,21 @@
                     <a href="{{ route('challenges.edit', $challenge) }}" class="btn btn-info btn-block">Edit Challenge</a>
                     <br>
                 @else
-                    <a href="#" class="btn btn-success btn-block"><i class="fa fa-btn fa-heart"></i> Save Challenge</a>
+                    @if(!$favorite)
+                        <form action="{{ route('favorites.store') }}" class="form" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="challenge_id" value="{{ $challenge->id }}">
+                            <button type="submit" class="btn btn-success btn-block"><i class="fa fa-btn fa-heart"></i> Save Challenge</button>
+                        </form>
+                    @else
+                        <form action="{{ route('favorites.destroy', $favorite) }}" class="form" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <input type="hidden" name="challenge_id" value="{{ $challenge->id }}">
+                            <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-btn fa-heart"></i> Remove Favorite</button>
+                        </form>
+                    @endif
+
                     <br>
                 @endif
 

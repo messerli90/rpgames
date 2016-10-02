@@ -6,18 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class UsersController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+use App\Favorite;
+use App\Challenge;
 
+class FavoritesController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -25,10 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $challenges = auth()->user()->challenges;
-        $favorites = auth()->user()->favorites()->with('favoritable.game')->get();
-
-        return view('home', compact('challenges', 'favorites'));
+        //
     }
 
     /**
@@ -49,7 +39,19 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ( !auth()->check() ) {
+            return back();
+        }
+
+        $challenge = Challenge::findOrFail($request->get('challenge_id'));
+
+        $favorite = new Favorite([
+            'user_id' => auth()->id(),
+        ]);
+
+        $challenge->favorites()->save($favorite);
+
+        return back();
     }
 
     /**
@@ -92,8 +94,20 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Favorite $favorite)
     {
-        //
+        if ( !auth()->check() ) {
+            return back();
+        }
+
+        $user = auth()->user();
+
+        if ( $user != $favorite->user ) {
+            return back();
+        }
+
+        $favorite->delete();
+
+        return back();
     }
 }

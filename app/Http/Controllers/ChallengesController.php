@@ -10,6 +10,7 @@ use App\Game;
 use App\Platform;
 use App\Difficulty;
 use App\Language;
+use App\Favorite;
 
 use Validator;
 
@@ -105,9 +106,16 @@ class ChallengesController extends Controller
     {
         $challenge = $challenge->load(['game', 'platform', 'language', 'difficulty', 'user', 'reviews']);
 
+        if (auth()->check()){
+            $favorite = Favorite::where('favoritable_id', $challenge->id)->where('user_id', auth()->id())->first();
+        } else {
+            $favorite = false;
+        }
+
+
         $challenge->incrementViews();
 
-        return view('challenges.show', compact('challenge'));
+        return view('challenges.show', compact('challenge', 'favorite'));
     }
 
     /**
