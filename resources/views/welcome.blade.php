@@ -75,15 +75,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <span style="color:red;">RPG</span>ames
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    {{-- <a href="https://laravel.com/docs">Documentation</a> --}}
+                    <a href="{{ route('challenges.index') }}">Challenges</a>
+                    {{-- <a href="https://laravel-news.com">News</a> --}}
+                    <a href="https://discord.com" target="_blank">Discord</a>
+                    <a href="https://github.com/messerli90/rpgames" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>

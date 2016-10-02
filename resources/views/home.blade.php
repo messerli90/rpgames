@@ -27,7 +27,7 @@
                             <li class="list-group-item">
                                 <div class="pull-right">
                                     <span class="fa fa-fw fa-eye"></span> {{ $challenge->views }}
-                                    <span class="fa fa-fw fa-star"></span> {{ $challenge->views }}
+                                    <span class="fa fa-fw fa-star"></span> {{ $challenge->reviews()->count() }}
                                 </div>
                                 <a href="{{ route('challenges.show', $challenge) }}">{{ $challenge->title }}</a>
                             </li>

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Rating extends Model
+class Review extends Model
 {
     use SoftDeletes;
 
@@ -30,7 +30,7 @@ class Rating extends Model
     ];
 
     /**
-     * A Rating belongs to a User
+     * A Review belongs to a User
      *
      * @return Collection
      */
@@ -40,7 +40,7 @@ class Rating extends Model
     }
 
     /**
-     * A Rating morphs to another Model
+     * A Review morphs to another Model
      * @return Collection
      */
     public function rateable()
@@ -56,7 +56,7 @@ class Rating extends Model
     public static function getStars($value)
     {
         $return = '';
-        for ($i=0; $i < 5; $i++) {
+        for ($i=1; $i <= 5; $i++) {
             if($i <= $value) {
                 $return .= '<i class="fa fa-star"></i>';
             } else {

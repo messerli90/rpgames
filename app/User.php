@@ -38,23 +38,13 @@ class User extends Authenticatable
     }
 
     /**
-     * A User has many Comments
+     * A User has many Reviews
      *
      * @return Collection
      */
-    public function comments()
+    public function reviews()
     {
-        return $this->hasMany('App\Comment');
-    }
-
-    /**
-     * A User has many Ratings
-     *
-     * @return Collection
-     */
-    public function ratings()
-    {
-        return $this->hasMany('App\Rating');
+        return $this->hasMany('App\Review');
     }
 
     /**

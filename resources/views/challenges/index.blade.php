@@ -44,7 +44,7 @@
                                 {{ $challenge->count_favorites }} favorites
                             </div>
                             <div class="col-xs-3">
-                                {{ $challenge->average_rating}} rating
+                                {{ $challenge->average_review}} review
                             </div>
                             <div class="col-xs-3 text-right">
                                 <span class="text-muted">Created on </span>

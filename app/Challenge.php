@@ -36,7 +36,7 @@ class Challenge extends Model
      *
      * @var array
      */
-    protected $appends = ['average_rating', 'count_favorites'];
+    protected $appends = ['average_review', 'count_favorites'];
 
     /**
      * A Challenge belongs to a User
@@ -99,31 +99,22 @@ class Challenge extends Model
     }
 
     /**
-     * A Challenge can have Comments
+     * A Challenge can have Reviews
      * @return Collection
      */
-    public function comments()
+    public function reviews()
     {
-        return $this->morphMany('App\Comment', 'commentable');
+        return $this->morphMany('App\Review', 'reviewable');
     }
 
     /**
-     * A Challenge can have Ratings
-     * @return Collection
-     */
-    public function ratings()
-    {
-        return $this->morphMany('App\Rating', 'rateable');
-    }
-
-    /**
-     * Get the average rating of this Challenge
+     * Get the average review of this Challenge
      *
      * @return double
      */
-    public function getAverageRatingAttribute()
+    public function getAverageReviewAttribute()
     {
-        return (double) $this->ratings()->avg('value');
+        return (double) $this->reviews()->avg('value');
     }
 
     /**
@@ -134,5 +125,13 @@ class Challenge extends Model
     public function getCountFavoritesAttribute()
     {
         return (int) $this->favorites()->count();
+    }
+
+    /**
+     * Increment number of views for this Challenge
+     */
+    public function incrementViews()
+    {
+        $this->increment('views');
     }
 }

@@ -48,21 +48,11 @@ class CreateInitialTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('commentable_id')->unsigned()->index();
-            $table->string('commentable_type');
-            $table->text('body');
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('ratings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('rateable_id')->unsigned()->index();
-            $table->string('rateable_type');
+            $table->integer('reviewable_id')->unsigned()->index();
+            $table->string('reviewable_type');
             $table->integer('value');
             $table->text('body');
             $table->softDeletes();
@@ -88,14 +78,13 @@ class CreateInitialTables extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::drop('favorites');
-        Schema::drop('ratings');
-        Schema::drop('comments');
-        Schema::drop('challenges');
-        Schema::drop('difficulties');
-        Schema::drop('languages');
-        Schema::drop('platforms');
-        Schema::drop('games');
+        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('challenges');
+        Schema::dropIfExists('difficulties');
+        Schema::dropIfExists('languages');
+        Schema::dropIfExists('platforms');
+        Schema::dropIfExists('games');
 
         Schema::enableForeignKeyConstraints();
     }

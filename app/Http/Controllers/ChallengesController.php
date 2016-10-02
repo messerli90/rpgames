@@ -23,7 +23,7 @@ class ChallengesController extends Controller
         // TODO: Add filters
 
         $challenges = Challenge::orderBy('created_at', 'desc')
-            ->with(['game', 'platform', 'ratings', 'language', 'difficulty', 'user'])
+            ->with(['game', 'platform', 'reviews', 'language', 'difficulty', 'user'])
             ->get();
 
         return view('challenges.index', compact('challenges'));
@@ -78,7 +78,9 @@ class ChallengesController extends Controller
      */
     public function show(Request $request, Challenge $challenge)
     {
-        $challenge = $challenge->load(['game', 'platform', 'language', 'difficulty', 'user', 'ratings']);
+        $challenge = $challenge->load(['game', 'platform', 'language', 'difficulty', 'user', 'reviews']);
+
+        $challenge->incrementViews();
 
         return view('challenges.show', compact('challenge'));
     }
@@ -86,12 +88,19 @@ class ChallengesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Challenge $challenge
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, Challenge $challenge)
     {
-        //
+        $games = Game::orderBy('title', 'asc')->get();
+        $platforms = Platform::orderBy('title', 'asc')->get();
+        $difficulties = Difficulty::orderBy('id', 'asc')->get();
+        $languages = Language::orderBy('title', 'asc')->get();
+
+        $challenge = $challenge->load(['game', 'platform', 'language', 'difficulty', 'user', 'reviews']);
+
+        return view('challenges.edit', compact('challenge', 'games', 'platforms', 'difficulties', 'languages'));
     }
 
     /**
@@ -101,9 +110,21 @@ class ChallengesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Challenge $challenge)
     {
-        //
+        if ( !auth()->check() ) {
+            return back();
+        }
+
+        $user = auth()->user();
+
+        if ( $user != $challenge->user ) {
+            return back();
+        }
+
+        $challenge->update($request->all());
+
+        return redirect()->action('ChallengesController@show', $challenge);
     }
 
     /**
