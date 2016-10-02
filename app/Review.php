@@ -43,7 +43,7 @@ class Review extends Model
      * A Review morphs to another Model
      * @return Collection
      */
-    public function rateable()
+    public function reviewable()
     {
         return $this->morphTo();
     }

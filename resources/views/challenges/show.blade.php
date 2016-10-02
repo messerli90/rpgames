@@ -38,6 +38,15 @@
                                 <footer>
                                     {!! App\Review::getStars($review->value) !!}
                                     - {{ $review->user->name }}
+                                    - {{ $review->created_at->diffForHumans() }}
+                                    @if(auth()->check() && auth()->id() == $review->user_id)
+                                        - <a href="{{ route('reviews.edit', $review) }}">Edit</a>
+                                        - <a href="#" class="text-danger delete-comment">Delete</a>
+                                        <form class="hidden" action="{{ route('reviews.destroy', $review) }}" method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                        </form>
+                                    @endif
                                 </footer>
                             </blockquote>
                             <hr>
@@ -50,24 +59,26 @@
                             </a>
                             <div class="collapse" id="reviewForm">
                                 <hr>
-                                <form class="form" action="#" method="post">
+                                <form class="form" action="{{ route('reviews.store') }}" method="post">
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="value" value="">
+
+                                    <input type="hidden" name="challenge_id" value="{{ $challenge->id }}">
 
                                     <div class="form-group">
                                         <label>Rate the challenge out of 5 stars</label>
-                                        <p>
-                                            <a href="#" class="star-rating" id="1-star"><i class="fa fa-star-o"></i></a>
-                                            <a href="#" class="star-rating" id="1-star"><i class="fa fa-star-o"></i></a>
-                                            <a href="#" class="star-rating" id="1-star"><i class="fa fa-star-o"></i></a>
-                                            <a href="#" class="star-rating" id="1-star"><i class="fa fa-star-o"></i></a>
-                                            <a href="#" class="star-rating" id="1-star"><i class="fa fa-star-o"></i></a>
-                                        </p>
+                                        <select class="form-control" name="value" required>
+                                            <option value="">Rate</option>
+                                            <option value="1">1 Star</option>
+                                            <option value="2">2 Stars</option>
+                                            <option value="3">3 Stars</option>
+                                            <option value="4">4 Stars</option>
+                                            <option value="5">5 Stars</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="review-body">Review</label>
-                                        <textarea class="form-control" id="review-body" name="body" placeholder="Write your experience playing this challenge" rows="5" cols="40"></textarea>
+                                        <textarea class="form-control" id="review-body" name="body" placeholder="Write your experience playing this challenge" rows="5" cols="40" required></textarea>
                                     </div>
 
                                     <div class="form-group">
@@ -108,16 +119,28 @@
                 </div>
 
                 <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Stats</h3>
-                  </div>
-                  <div class="panel-body">
-                    <h5>Views</h5>
-                    <p>{{ $challenge->views }}</p>
-                  </div>
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Stats</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h5>Views</h5>
+                        <p>{{ $challenge->views }}</p>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+    $(document).ready(function() {
+        $('.delete-comment').click(function(e) {
+            e.preventDefault();
+
+            $(this).siblings( "form" ).submit();
+        });
+    });
+    </script>
 @endsection

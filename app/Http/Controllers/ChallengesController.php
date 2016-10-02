@@ -11,6 +11,8 @@ use App\Platform;
 use App\Difficulty;
 use App\Language;
 
+use Validator;
+
 class ChallengesController extends Controller
 {
     /**
@@ -18,11 +20,19 @@ class ChallengesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // TODO: Add filters
 
         $challenges = Challenge::orderBy('created_at', 'desc')
+            ->where(function($q) use($request) {
+                if($request->get('search')) {
+                    $q->where('title', 'like', '%'.$request->get('search').'%');
+                }
+                if($request->get('game_id')) {
+                    $q->where('game_id', $request->get('game_id'));
+                }
+            })
             ->with(['game', 'platform', 'reviews', 'language', 'difficulty', 'user'])
             ->get();
 
@@ -61,6 +71,21 @@ class ChallengesController extends Controller
         }
 
         $user = auth()->user();
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'game_id' => 'required',
+            'platform_id' => 'required',
+            'difficulty_id' => 'required',
+            'language_id' => 'required',
+            'description' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('challenges.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         // Attach user_id to request object
         $request->request->add(['user_id' => $user->id]);
@@ -120,6 +145,21 @@ class ChallengesController extends Controller
 
         if ( $user != $challenge->user ) {
             return back();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'game_id' => 'required',
+            'platform_id' => 'required',
+            'difficulty_id' => 'required',
+            'language_id' => 'required',
+            'description' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('challenges.update')
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $challenge->update($request->all());

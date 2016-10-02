@@ -23,3 +23,5 @@ Auth::routes();
 Route::resource('home', 'UsersController');
 
 Route::resource('challenges', 'ChallengesController');
+
+Route::resource('reviews', 'ReviewsController');

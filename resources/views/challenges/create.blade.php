@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <label for="title" class="control-label">Title</label>
                         <input type="text" class="form-control" name="title" id="title"
-                            placeholder="Fallout 4 | No killing run" required>
+                            placeholder="No killing run" required>
                     </div>
 
                     <div class="form-group">

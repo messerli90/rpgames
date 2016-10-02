@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="title" class="control-label">Title</label>
                         <input type="text" class="form-control" name="title" id="title"
-                            placeholder="Fallout 4 | No killing run" required
+                            placeholder="No killing run" required
                             value="{{ old('title', $challenge->title) }}">
                     </div>
 
