@@ -49,6 +49,16 @@ class Review extends Model
     }
 
     /**
+     * Sanitizes input to be used with Markdown Parser
+     *
+     * @param String $value
+     */
+    public function setBodyAttribute($value)
+    {
+        $this->attributes['body'] = filter_var($value, FILTER_SANITIZE_STRING);
+    }
+
+    /**
      * Return star icons
      *
      * @return String

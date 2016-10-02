@@ -128,6 +128,16 @@ class Challenge extends Model
     }
 
     /**
+     * Sanitizes input to be used with Markdown Parser
+     *
+     * @param String $value
+     */
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = filter_var($value, FILTER_SANITIZE_STRING);
+    }
+
+    /**
      * Increment number of views for this Challenge
      */
     public function incrementViews()

@@ -12,7 +12,7 @@
                         <h3 class="panel-title">How it works</h3>
                     </div>
                     <div class="panel-body">
-                        {{ $challenge->description}}
+                        @markdown($challenge->description)
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                         @endunless
                         @foreach($challenge->reviews as $review)
                             <blockquote>
-                                <p>{{ $review->body }}</p>
+                                <p>@markdown($review->body)</p>
                                 <footer>
                                     {!! App\Review::getStars($review->value) !!}
                                     - {{ $review->user->name }}
