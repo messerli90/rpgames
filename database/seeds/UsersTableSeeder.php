@@ -11,6 +11,17 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('users')->insert([
+            [
+                'name' => 'kniFely',
+                'email' => 'knifely@rpgames.dev',
+                'password' => bcrypt('password1')
+            ],
+            [
+                'name' => 'YesMan',
+                'email' => 'yesman@rpgames.dev',
+                'password' => bcrypt('password1')
+            ]
+        ]);
     }
 }

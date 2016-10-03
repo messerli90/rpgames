@@ -104,7 +104,7 @@ class ChallengesController extends Controller
      */
     public function show(Request $request, Challenge $challenge)
     {
-        $challenge = $challenge->load(['game', 'platform', 'language', 'difficulty', 'user', 'reviews']);
+        $challenge = $challenge->load(['game', 'platform', 'language', 'difficulty', 'user', 'reviews', 'videos']);
 
         if (auth()->check()){
             $favorite = Favorite::where('favoritable_id', $challenge->id)->where('user_id', auth()->id())->first();

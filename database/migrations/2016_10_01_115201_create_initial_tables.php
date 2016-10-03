@@ -67,6 +67,17 @@ class CreateInitialTables extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        Schema::create('videos', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('url');
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('challenge_id')->unsigned()->index();
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -78,6 +89,7 @@ class CreateInitialTables extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
+        Schema::dropIfExists('videos');
         Schema::dropIfExists('favorites');
         Schema::dropIfExists('reviews');
         Schema::dropIfExists('challenges');

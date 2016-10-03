@@ -108,13 +108,22 @@ class Challenge extends Model
     }
 
     /**
+     * A Challenge has many Videos
+     * @return Collection
+     */
+    public function videos()
+    {
+        return $this->hasMany('App\Video');
+    }
+
+    /**
      * Get the average review of this Challenge
      *
      * @return double
      */
     public function getAverageReviewAttribute()
     {
-        return (double) $this->reviews()->avg('value');
+        return round($this->reviews()->avg('value'), 1);
     }
 
     /**

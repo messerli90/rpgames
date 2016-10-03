@@ -46,7 +46,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <span class="text-muted">{{ $challenge->game->title}}</span> |
+                                <span class="text-muted pull-right">{{ $challenge->game->title}}</span>
                                 <a href="{{ route('challenges.show', $challenge) }}">{{ $challenge->title }}</a>
                             </h3>
                         </div>

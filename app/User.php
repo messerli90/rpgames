@@ -56,4 +56,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Favorite');
     }
+
+    /**
+     * A User has many Videos
+     * @return Collection
+     */
+    public function videos()
+    {
+        return $this->hasMany('App\Video');
+    }
 }
