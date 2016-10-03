@@ -50,6 +50,22 @@ class Video extends Model
         return $this->belongsTo('App\Challenge');
     }
 
+    /**
+     * Sanitizes input to be used with Markdown Parser
+     *
+     * @param String $value
+     */
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = filter_var($value, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * Transform non-embed url to embedable url
+     *
+     * @param  String
+     * @return String
+     */
     public static function transformURL($provided_url)
     {
         if (strpos($provided_url, '/embed') !== false) {

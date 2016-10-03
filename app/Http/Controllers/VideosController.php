@@ -96,9 +96,9 @@ class VideosController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function edit($id)
+    public function edit(Video $video)
     {
-        //
+        return view('videos.edit', compact('video'));
     }
 
     /**
@@ -108,9 +108,32 @@ class VideosController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Video $video)
     {
-        //
+        if ( !auth()->check() ) {
+            return back();
+        }
+
+        $user = auth()->user();
+
+        if ( $user != $video->user ) {
+            return back();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'url' => 'required|url'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('videos.edit', $video)
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        $video->update($request->all());
+
+        return redirect()->route('challenges.show', $video->challenge);
     }
 
     /**
@@ -119,8 +142,20 @@ class VideosController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function destroy($id)
+    public function destroy(Video $video)
     {
-        //
+        if ( !auth()->check() ) {
+            return back();
+        }
+
+        $user = auth()->user();
+
+        if ( $user != $video->user ) {
+            return back();
+        }
+
+        $video->delete();
+
+        return back();
     }
 }
