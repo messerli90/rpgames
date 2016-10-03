@@ -32,7 +32,7 @@
 
                             <div class="form-group">
                                 <a href="{{ route('challenges.show', $video->challenge) }}" class="btn btn-default pull-right">Cancel</a>
-                                <button type="submit" class="btn btn-primary">Update Review</button>
+                                <button type="submit" class="btn btn-primary">Update Video</button>
                             </div>
                         </form>
                     </div>

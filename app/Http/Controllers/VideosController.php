@@ -131,6 +131,10 @@ class VideosController extends Controller
             ->withInput();
         }
 
+        $url = Video::transformURL($request->get('url'));
+
+        $request->request->add(['url' => $url]);
+
         $video->update($request->all());
 
         return redirect()->route('challenges.show', $video->challenge);

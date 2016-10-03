@@ -20,7 +20,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="search">Search by title</label>
+                                <label for="search">Search by game</label>
                                 <select class="form-control" name="game_id">
                                     <option value="">Select a game</option>
                                     @foreach(App\Game::orderBy('title', 'asc')->get() as $game)

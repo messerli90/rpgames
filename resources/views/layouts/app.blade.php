@@ -40,7 +40,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <span style="color:red;">RPG</span>ames
+                    <span style="color:red;">RPG</span>ames <sup style="color:red; font-size: 55%; top: -0.9rem;">beta</sup>
                 </a>
             </div>
 
