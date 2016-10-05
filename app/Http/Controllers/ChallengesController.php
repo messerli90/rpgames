@@ -88,6 +88,26 @@ class ChallengesController extends Controller
                 ->withInput();
         }
 
+        $selected_game = $request->get('game_id');
+
+        if (! Game::where('title', 'like', $selected_game)->first()) {
+            $game = Game::create(['title' => ucwords($selected_game)]);
+        } else {
+            $game = Game::where('title', 'like', $selected_game)->first();
+        }
+
+        $request->request->add(['game_id' => $game->id]);
+
+        $selected_platform = $request->get('platform_id');
+
+        if (! Platform::where('title', 'like', $selected_platform)->first()) {
+            $platform = Platform::create(['title' => ucwords($selected_platform)]);
+        } else {
+            $platform = Platform::where('title', 'like', $selected_platform)->first();
+        }
+
+        $request->request->add(['platform_id' => $platform->id]);
+
         // Attach user_id to request object
         $request->request->add(['user_id' => $user->id]);
 

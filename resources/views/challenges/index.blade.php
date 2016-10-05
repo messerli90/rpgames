@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-        <div class="page-header">
+        {{-- <div class="page-header">
             <h1>All the Challenges <small></small></h1>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="col-sm-3">
                 <div class="panel panel-default">
@@ -43,10 +43,10 @@
                     <em>No challenges found, try broadening your search. Or <a href="{{ route('challenges.create') }}">create your own</a>.</em>
                 @endunless
                 @foreach($challenges as $challenge)
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <span class="text-muted pull-right">{{ $challenge->game->title}}</span>
+                                <span class="pull-right">{{ $challenge->game->title}}</span>
                                 <a href="{{ route('challenges.show', $challenge) }}">{{ $challenge->title }}</a>
                             </h3>
                         </div>
