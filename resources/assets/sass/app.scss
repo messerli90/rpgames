@@ -23,6 +23,7 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
+  font-size: 0.85em;
 
   .text-muted {
       margin: 20px 0;
@@ -35,4 +36,8 @@ blockquote {
 
 .page-header {
     margin-top: 0;
+}
+
+.challenge-list-meta {
+    margin-right: 1.5rem;
 }

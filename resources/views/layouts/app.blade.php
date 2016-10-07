@@ -54,7 +54,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('challenges.index') }}">Challenges</a></li>
+                    <li class="{{ request()->is('challenges', 'challenges/*') ? 'active' : ''}}"><a href="{{ route('challenges.index') }}">Challenges</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

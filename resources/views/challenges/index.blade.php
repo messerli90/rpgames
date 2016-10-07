@@ -51,34 +51,25 @@
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <p>
-                                        Platform: {{ $challenge->platform->title }}
-                                    </p>
-                                </div>
-                                <div class="col-sm-4">
-                                    <p>
-                                        Difficulty: {{ $challenge->difficulty->title }}
-                                    </p>
-                                </div>
-                                <div class="col-sm-4">
-                                    Language: {{ $challenge->language->title }}
-                                </div>
-                            </div>
+                            <p>
+                                You can <strong>play this on <a href="{{ route('challenges.index')}}?platform_id={{ $challenge->platform_id }}">{{ $challenge->platform->title}}</a></strong>
+                                if you're feeling up to the <strong><a href="{{ route('challenges.index')}}?difficulty_id={{ $challenge->difficulty_id }}">{{ $challenge->difficulty->title}}</a> difficulty</strong>.
+                            </p>
                         </div>
                         <div class="panel-footer">
                             <div class="row">
-                                <div class="col-xs-3">
-                                    {{ $challenge->views }} views
+                                <div class="col-xs-8">
+                                    <span class="challenge-list-meta">
+                                        {{ $challenge->views }} <span><i class="fa fa-fw fa-eye"></i></span>
+                                    </span>
+                                    <span class="challenge-list-meta">
+                                        {{ $challenge->count_favorites }} <span class="text-danger"><i class="fa fa-fw fa-heart"></i></span>
+                                    </span>
+                                    <span class="challenge-list-meta">
+                                        {{ $challenge->average_review}} <span class="text-info"><i class="fa fa-fw fa-comments"></i></span>
+                                    </span>
                                 </div>
-                                <div class="col-xs-3">
-                                    {{ $challenge->count_favorites }} favorites
-                                </div>
-                                <div class="col-xs-3">
-                                    {{ $challenge->average_review}} review
-                                </div>
-                                <div class="col-xs-3 text-right">
+                                <div class="col-xs-4 text-right">
                                     <span class="text-muted">Created on </span>
                                     {{ $challenge->created_at->toFormattedDateString() }}
                                 </div>

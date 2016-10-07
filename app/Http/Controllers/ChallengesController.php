@@ -23,8 +23,6 @@ class ChallengesController extends Controller
      */
     public function index(Request $request)
     {
-        // TODO: Add filters
-
         $challenges = Challenge::orderBy('created_at', 'desc')
             ->where(function($q) use($request) {
                 if($request->get('search')) {
@@ -32,6 +30,12 @@ class ChallengesController extends Controller
                 }
                 if($request->get('game_id')) {
                     $q->where('game_id', $request->get('game_id'));
+                }
+                if($request->get('platform_id')) {
+                    $q->where('platform_id', $request->get('platform_id'));
+                }
+                if($request->get('difficulty_id')) {
+                    $q->where('difficulty_id', $request->get('difficulty_id'));
                 }
             })
             ->with(['game', 'platform', 'reviews', 'language', 'difficulty', 'user'])
@@ -201,8 +205,20 @@ class ChallengesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Challenge $challenge)
     {
-        //
+        if ( !auth()->check() ) {
+            return back();
+        }
+
+        $user = auth()->user();
+
+        if ( $user != $challenge->user ) {
+            return back();
+        }
+
+        $challenge->delete();
+
+        return redirect()->action('ChallengesController@index');
     }
 }
