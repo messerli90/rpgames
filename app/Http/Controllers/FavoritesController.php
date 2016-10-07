@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Favorite;
 use App\Challenge;
+use App\User;
 
 class FavoritesController extends Controller
 {
@@ -18,7 +19,15 @@ class FavoritesController extends Controller
      */
     public function index()
     {
-        //
+        $favorites = null;
+        $user = null;
+
+        if (request()->has('user_id')) {
+            $user = User::findOrFail(request()->get('user_id'));
+            $favorites = $user->favorites;
+        }
+
+        return view('favorites.index', compact('favorites', 'user'));
     }
 
     /**

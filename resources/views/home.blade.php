@@ -60,6 +60,9 @@
                     </ul>
                 @endif
             </div>
+            <div class="panel-footer">
+                <a href="{{ route('favorites.index') }}?user_id={{ auth()->id() }}" class="small"><i class="fa fa-share"></i> Share your favorites list</a>
+            </div>
         </div>
     </div>
 </div>
