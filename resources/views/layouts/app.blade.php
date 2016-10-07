@@ -96,6 +96,8 @@
 
     @yield('content')
 
+    @include('partials.markdown-modal')
+
     <footer class="footer">
       <div class="container">
         <div class="row">

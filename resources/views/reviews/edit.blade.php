@@ -33,6 +33,7 @@
                             <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                                 <label class="control-label" for="review-body">Review</label>
                                 <textarea class="form-control" id="review-body" name="body" placeholder="Write your experience playing this challenge" rows="5" cols="40" required min="5">{{ old('body', $review->body) }}</textarea>
+                                <p class="help-block"><a href="#" data-toggle="modal" data-target="#markdownHelp">Formatting Help</a></p>
                                 @if ($errors->has('body'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('body') }}</strong>

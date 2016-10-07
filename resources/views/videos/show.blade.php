@@ -65,6 +65,7 @@
                     <div class="form-group">
                         <label for="video-description">Description</label>
                         <textarea class="form-control" id="video-description" name="description" placeholder="Describe your video (optional)" rows="4" cols="40"></textarea>
+                        <p class="help-block"><a href="#" data-toggle="modal" data-target="#markdownHelp">Formatting Help</a></p>
                     </div>
 
                     <div class="form-group">

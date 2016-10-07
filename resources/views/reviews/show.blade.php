@@ -61,6 +61,7 @@
                     <div class="form-group">
                         <label for="review-body">Review</label>
                         <textarea class="form-control" id="review-body" name="body" placeholder="Write your experience playing this challenge" rows="5" cols="40" required></textarea>
+                        <p class="help-block"><a href="#" data-toggle="modal" data-target="#markdownHelp">Formatting Help</a></p>
                     </div>
 
                     <div class="form-group">

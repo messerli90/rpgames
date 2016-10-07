@@ -68,6 +68,7 @@
                             <label for="description" class="control-label">Description</label>
                             <textarea name="description" rows="15" cols="40" placeholder="Explain your challenge"
                             required class="form-control">{{ old('description') }}</textarea>
+                            <p class="help-block"><a href="#" data-toggle="modal" data-target="#markdownHelp">Formatting Help</a></p>
                         </div>
                     </div>
                 </div>
