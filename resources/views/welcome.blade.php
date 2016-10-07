@@ -84,7 +84,7 @@
                     <p class="lead">You finished Fallout 4 (for the third time) now what?<br>Do you play it again and join a different faction? Go hardcore, play perma-death and don't respawn? Or do you limit yourself to only using melee weapons? These are all fun challenges that make the game fresh again.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="/images/pexels-photo-51415.jpeg" alt="">
+                    <img class="img-responsive" src="/images/stock1.jpeg" alt="">
                 </div>
             </div>
 
@@ -106,7 +106,7 @@
                     <p class="lead">Have you come up with a really cool way to challenge yourself in a game? Why not share it with the rest of the world and get some feedback and new ideas.</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="/images/pexels-photo-133579.jpeg" alt="">
+                    <img class="img-responsive" src="/images/stock2.jpeg" alt="">
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
                     <p class="lead">Have a Youtube channel? Add videos of yourself playing a challenge for the world to see.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="/images/night-television-tv-theme-machines.jpg" alt="">
+                    <img class="img-responsive" src="/images/stock3.jpg" alt="">
                 </div>
             </div>
 
