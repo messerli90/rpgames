@@ -25,9 +25,10 @@
                     <ul class="list-group">
                         @foreach($challenges as $challenge)
                             <li class="list-group-item">
-                                <div class="pull-right">
-                                    <span class="fa fa-fw fa-eye"></span> {{ $challenge->views }}
-                                    <span class="fa fa-fw fa-star"></span> {{ $challenge->reviews()->count() }}
+                                <div class="pull-right challenge-list-meta">
+                                    <span><i class="fa fa-fw fa-eye"></i> {{ $challenge->views }}</span>
+                                    <span><i class="fa fa-fw fa-star"></i> {{ $challenge->reviews()->count() }}</span>
+                                    <span><a href="{{ route('challenges.edit', $challenge) }}" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-fw fa-edit"></i></a></span>
                                 </div>
                                 <a href="{{ route('challenges.show', $challenge) }}">{{ $challenge->title }}</a>
                             </li>

@@ -92,14 +92,14 @@
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-xs-8">
-                                <span class="challenge-list-meta">
+                            <div class="col-xs-8 challenge-list-meta">
+                                <span>
                                     {{ $challenge->views }} <span><i class="fa fa-fw fa-eye" data-toggle="tooltip" data-placement="bottom" title="Views"></i></span>
                                 </span>
-                                <span class="challenge-list-meta">
+                                <span>
                                     {{ $challenge->count_favorites }} <span class="text-danger" data-toggle="tooltip" data-placement="bottom" title="Favorited"><i class="fa fa-fw fa-heart"></i></span>
                                 </span>
-                                <span class="challenge-list-meta">
+                                <span>
                                     {{ $challenge->average_review}} <span class="text-info" data-toggle="tooltip" data-placement="bottom" title="Reviews"><i class="fa fa-fw fa-comments"></i></span>
                                 </span>
                             </div>

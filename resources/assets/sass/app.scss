@@ -4,6 +4,7 @@
 
 // Variables
 @import "variables";
+@import "landing_page";
 
 // Bootstrap
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
@@ -16,6 +17,17 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -38,6 +50,10 @@ blockquote {
     margin-top: 0;
 }
 
-.challenge-list-meta {
+.challenge-list-meta > span {
     margin-right: 1.5rem;
+}
+
+.challenge-list-meta > span:last-of-type{
+    margin-right: 0;
 }
