@@ -16,14 +16,32 @@
                         @markdown($challenge->description)
                     </div>
                 </div>
-                {{-- Description --}}
+                {{-- /Description --}}
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- RPGames Responsive -->
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-0223519100876576"
+                        data-ad-slot="6475713336"
+                        data-ad-format="auto"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    <div class="panel-footer">
+                        <small><em>This ad is for server costs.</em></small>
+                    </div>
+                </div>
 
                 {{-- Videos --}}
                 @include('videos.show', ['challenge' => $challenge])
 
                 {{-- Reviews --}}
                 @include('reviews.show', ['challenge' => $challenge])
-                
+
             </div>
             <div class="col-md-2">
 
@@ -87,6 +105,23 @@
                     </div>
                 </div>
 
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- RPGames Responsive -->
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-0223519100876576"
+                        data-ad-slot="6475713336"
+                        data-ad-format="auto"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    <div class="panel-footer">
+                        <small><em>This ad is for beer.</em></small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

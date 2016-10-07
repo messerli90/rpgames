@@ -55,6 +55,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li class="{{ request()->is('challenges', 'challenges/*') ? 'active' : ''}}"><a href="{{ route('challenges.index') }}">Challenges</a></li>
+                    <li class="{{ request()->is('how-it-works') ? 'active' : ''}}"><a href="{{ route('pages.how-it-works') }}">How it Works</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

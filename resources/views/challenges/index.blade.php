@@ -39,7 +39,16 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    ad
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- RPGames Responsive -->
+                    <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-0223519100876576"
+                    data-ad-slot="6475713336"
+                    data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
                 <div class="panel-footer">
                     <small><em>This ad is for beer.</em></small>
@@ -49,7 +58,16 @@
         <div class="col-sm-9">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    ad
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- RPGames Responsive -->
+                    <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-0223519100876576"
+                    data-ad-slot="6475713336"
+                    data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
                 <div class="panel-footer">
                     <small><em>This ad is for server costs.</em></small>

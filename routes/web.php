@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('how-it-works', [
+    'uses' => 'PagesController@howItWorks',
+    'as' => 'pages.how-it-works'
+]);
+
 Auth::routes();
 
 Route::resource('home', 'UsersController');
